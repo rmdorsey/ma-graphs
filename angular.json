@@ -25,7 +25,9 @@
             "styles": [
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/@webcomponents/custom-elements/src/native-shim.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -115,6 +117,244 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": "e2e/tsconfig.e2e.json",
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "bar-graph": {
+      "root": "projects/bar-graph/",
+      "sourceRoot": "projects/bar-graph/src",
+      "projectType": "application",
+      "prefix": "app",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "ngx-build-plus:build",
+          "options": {
+            "outputPath": "dist/bar-graph",
+            "index": "projects/bar-graph/src/index.html",
+            "main": "projects/bar-graph/src/main.ts",
+            "polyfills": "projects/bar-graph/src/polyfills.ts",
+            "tsConfig": "projects/bar-graph/tsconfig.app.json",
+            "assets": [
+              "projects/bar-graph/src/favicon.ico",
+              "projects/bar-graph/src/assets"
+            ],
+            "styles": [
+              "projects/bar-graph/src/styles.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/bar-graph/src/environments/environment.ts",
+                  "with": "projects/bar-graph/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "bar-graph:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "bar-graph:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "bar-graph:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/bar-graph/src/test.ts",
+            "polyfills": "projects/bar-graph/src/polyfills.ts",
+            "tsConfig": "projects/bar-graph/tsconfig.spec.json",
+            "karmaConfig": "projects/bar-graph/karma.conf.js",
+            "styles": [
+              "projects/bar-graph/src/styles.css"
+            ],
+            "scripts": [],
+            "assets": [
+              "projects/bar-graph/src/favicon.ico",
+              "projects/bar-graph/src/assets"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/bar-graph/tsconfig.app.json",
+              "projects/bar-graph/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "bar-graph-e2e": {
+      "root": "projects/bar-graph-e2e/",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/bar-graph-e2e/protractor.conf.js",
+            "devServerTarget": "bar-graph:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "bar-graph:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": "projects/bar-graph-e2e/tsconfig.e2e.json",
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "pie-graph": {
+      "root": "projects/pie-graph/",
+      "sourceRoot": "projects/pie-graph/src",
+      "projectType": "application",
+      "prefix": "app",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "ngx-build-plus:build",
+          "options": {
+            "outputPath": "dist/pie-graph",
+            "index": "projects/pie-graph/src/index.html",
+            "main": "projects/pie-graph/src/main.ts",
+            "polyfills": "projects/pie-graph/src/polyfills.ts",
+            "tsConfig": "projects/pie-graph/tsconfig.app.json",
+            "assets": [
+              "projects/pie-graph/src/favicon.ico",
+              "projects/pie-graph/src/assets"
+            ],
+            "styles": [
+              "projects/pie-graph/src/styles.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/pie-graph/src/environments/environment.ts",
+                  "with": "projects/pie-graph/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "pie-graph:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "pie-graph:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "pie-graph:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/pie-graph/src/test.ts",
+            "polyfills": "projects/pie-graph/src/polyfills.ts",
+            "tsConfig": "projects/pie-graph/tsconfig.spec.json",
+            "karmaConfig": "projects/pie-graph/karma.conf.js",
+            "styles": [
+              "projects/pie-graph/src/styles.css"
+            ],
+            "scripts": [],
+            "assets": [
+              "projects/pie-graph/src/favicon.ico",
+              "projects/pie-graph/src/assets"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/pie-graph/tsconfig.app.json",
+              "projects/pie-graph/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "pie-graph-e2e": {
+      "root": "projects/pie-graph-e2e/",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/pie-graph-e2e/protractor.conf.js",
+            "devServerTarget": "pie-graph:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "pie-graph:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": "projects/pie-graph-e2e/tsconfig.e2e.json",
             "exclude": [
               "**/node_modules/**"
             ]
